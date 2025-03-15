@@ -1,0 +1,1 @@
+../bash/parse_prioritized.pl

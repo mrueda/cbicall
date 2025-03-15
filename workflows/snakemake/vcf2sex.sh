@@ -1,0 +1,1 @@
+../bash/vcf2sex.sh
