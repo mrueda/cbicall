@@ -40,8 +40,8 @@ my $prompt       = 'Info:';
 my $spacer       = '*' x 39;
 my $arrow        = '=>';
 my $cmd          = '';
-my $author       = '(C) 2025 Manuel Rueda, PhD';
-my $license      = 'GNU General Public License v3';
+my $author      = 'Author: Manuel Rueda, PhD';
+my $license     = 'License: GNU General Public License v3';
 my $cbicall_path = abs_path($0);
 
 # Personalize warn and die functions
@@ -503,11 +503,9 @@ To be determined.
 
 =head1 AUTHOR
 
-Written by Manuel Rueda (mrueda). GitHub repository: L<https://github.com/mrueda/cbicall>
+Written by Manuel Rueda (mrueda). GitHub repository: L<https://github.com/mrueda/cbicall>. CBICall takes ideas from ScrippsCall, developed while at L<SRTI|https://www.scripps.edu/science-and-medicine/translational-institute/> (Scripps Research Translational Institute) during 2015-2017.
 
 =head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2025, Manuel Rueda. CBICall takes ideas from ScrippsCall, developed while at L<SRTI|https://www.scripps.edu/science-and-medicine/translational-institute/> (Scripps Research Translational Institute) during 2015-2017.
 
 Please see the included LICENSE file for distribution and usage terms.
 

@@ -237,10 +237,8 @@ To be determined.
 
 # AUTHOR
 
-Written by Manuel Rueda (mrueda). GitHub repository: [https://github.com/mrueda/cbicall](https://github.com/mrueda/cbicall)
+Written by Manuel Rueda (mrueda). GitHub repository: [https://github.com/mrueda/cbicall](https://github.com/mrueda/cbicall). CBICall takes ideas from ScrippsCall, developed while at [SRTI](https://www.scripps.edu/science-and-medicine/translational-institute/) (Scripps Research Translational Institute) during 2015-2017.
 
 # COPYRIGHT AND LICENSE
-
-Copyright (C) 2025, Manuel Rueda. CBICall takes ideas from ScrippsCall, developed while at [SRTI](https://www.scripps.edu/science-and-medicine/translational-institute/) (Scripps Research Translational Institute) during 2015-2017.
 
 Please see the included LICENSE file for distribution and usage terms.
