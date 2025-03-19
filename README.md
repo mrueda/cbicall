@@ -167,7 +167,7 @@ All parts must follow a strict character count, and everything after the undersc
 
 - Format: `[ProjectCode]_[SampleType]`
 
-    - - `ProjectCode`: Exactly 7 characters (e.g., `MA99999`)
+    - - `ProjectCode`: Exactly 7 characters \[a-zA-Z0-9\] (e.g., `MA99999`)
     - - `SampleType`: Must be `exome` (5 characters)
 
     Example:
@@ -180,7 +180,7 @@ All parts must follow a strict character count, and everything after the undersc
 
 - Format: `[ProjectCode][SampleID][Role]_[SampleTypeShort]`
 
-    - - `ProjectCode`: 7 characters (e.g., `MA99999`)
+    - - `ProjectCode`: 7 characters (\[a-zA-Z0-9\] e.g., `MA99999`)
     - - `SampleID`: 2 characters (e.g., `01`)
     - - `Role`: 1 character (e.g., `P` for Proband, `F` for Father, `M` for Mother)
     - - `SampleTypeShort`: Must be `ex` (2 characters)

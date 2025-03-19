@@ -390,7 +390,6 @@ Supported workflow engines: C<bash> or C<snakemake>.
 
 Note: For Trio analyses, unique (de novo) variant rates for probands typically should be ~1%, and ~10% for parents. Significant deviations may indicate issues.
 
-
 =head2 ADDENDUM: Nomenclature Guidelines
 
 All parts must follow a strict character count, and everything after the underscore is mandatory.
@@ -403,7 +402,7 @@ All parts must follow a strict character count, and everything after the undersc
 
 =over 4
 
-=item - C<ProjectCode>: Exactly 7 characters (e.g., C<MA99999>)
+=item - C<ProjectCode>: Exactly 7 characters [a-zA-Z0-9] (e.g., C<MA99999>)
 
 =item - C<SampleType>: Must be C<exome> (5 characters)
 
@@ -425,7 +424,7 @@ Total: 7 + 1 + 5 = 13 characters.
 
 =over 4
 
-=item - C<ProjectCode>: 7 characters (e.g., C<MA99999>)
+=item - C<ProjectCode>: 7 characters ([a-zA-Z0-9] e.g., C<MA99999>)
 
 =item - C<SampleID>: 2 characters (e.g., C<01>)
 

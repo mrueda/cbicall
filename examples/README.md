@@ -38,8 +38,8 @@ $WGSIM -S 42 -N 50000 -1 150 -2 150 -r 0.001 -e 0.02 -R 0.001 -X 0.001 \
 It is extremely important that directories and files follow a standardized nomenclature with the same number of characters. For example:
 
 ```bash
-CNAG_99_exome/  
-├── CNAG_9901P_ex  
+CNAG999_exome/  
+├── CNAG99901P_ex  
 ```
 
 In particular, apart from the number of characters, the `_exome` and `_ex`
@@ -47,17 +47,17 @@ In particular, apart from the number of characters, the `_exome` and `_ex`
 Then, the `fastq` files should look like this:
 
 ```
-CNAG_9901F_ex_S2_L001_R1_001.fastq.gz  
-CNAG_9901F_ex_S2_L001_R2_001.fastq.gz  
+CNAG99901F_ex_S2_L001_R1_001.fastq.gz  
+CNAG99901F_ex_S2_L001_R2_001.fastq.gz  
 ...  
 ```
 
 According to that:
 
 ```bash
-mkdir -p CNAG_99_exome/CNAG_9901P_ex
-gzip -c sim_R1.fastq > CNAG_99_exome/CNAG_9901P_ex/CNAG_9901F_ex_S2_L001_R1_001.fastq.gz
-gzip -c sim_R2.fastq > CNAG_99_exome/CNAG_9901P_ex/CNAG_9901F_ex_S2_L001_R2_001.fastq.gz
+mkdir -p CNAG999_exome/CNAG99901P_ex
+gzip -c sim_R1.fastq > CNAG999_exome/CNAG99901P_ex/CNAG99901F_ex_S2_L001_R1_001.fastq.gz
+gzip -c sim_R2.fastq > CNAG999_exome/CNAG99901P_ex/CNAG99901F_ex_S2_L001_R2_001.fastq.gz
 ```
 
 ### Run `cbicall`
@@ -80,15 +80,19 @@ This should complete in ~15 minutes.
 Check results using:
 
 ```bash
-wc -l CNAG_99_exome/CNAG_9901P_ex/cbicall_/02_varcall/*QC*vcf
+wc -l CNAG999_exome/CNAG99901P_ex/cbicall_/02_varcall/*QC*vcf
 ```
 
 Expected result: ~128 lines, containing exactly 1 variant.
 
 ```
-CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	CNAG_9901rPF
+CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	CNAG99901rPF
 3	30686407	.	G	T	15.85	LowCoverage;LowQual;VeryLowQual	AC=2;AF=1.00;AN=2;DP=2;Dels=0.00;ExcessHet=3.0103;FS=0.000;HaplotypeScore=0.0000;MLEAC=2;MLEAF=1.00;MQ=60.00;MQ0=0;QD=7.93;SOR=0.693	GT:AD:DP:GQ:PL	1/1:0,2:2:6:43,6,0
 ```
+
+---
+
+> **Note:** We will not be able to determine the sex of the sample as it does not contain enogh reads
 
 ---
 
@@ -96,8 +100,8 @@ CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	CNAG_9901rPF
 
 Generate larger FASTQ files using `wgsim` for multiple samples:
 
-- `CNAG_99_exome/CNAG_9901F_ex`
-- `CNAG_99_exome/CNAG_9901M_ex`
+- `CNAG999_exome/CNAG99901F_ex`
+- `CNAG999_exome/CNAG99901M_ex`
 - (additional samples as necessary)
 
 ---
