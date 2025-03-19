@@ -19,7 +19,7 @@ tools:
     samtools: "{ngsutils}/samtools-0.1.19_arm64/samtools"
     bedtools: "{ngsutils}/bedtools2_arm64/bin/bedtools"
   amd64:
-    bwa: "{ngsutils}/bwa-0.7.17/bwa"
+    bwa: "{ngsutils}/bwa-0.7.18/bwa"
     samtools: "{ngsutils}/samtools-0.1.19/samtools"
     bedtools: "{ngsutils}/bedtools2/bin/bedtools"
 

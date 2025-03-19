@@ -22,7 +22,7 @@ if [ "$ARCH" == "aarch64" ]; then
 
 else
     JAVA=/usr/lib/jvm/java-8-openjdk-amd64/bin/java
-    BWA=$NGSUTILS/bwa-0.7.17/bwa           # Needs ~6g RAM
+    BWA=$NGSUTILS/bwa-0.7.18/bwa           # Needs ~6g RAM
     SAM=$NGSUTILS/samtools-0.1.19/samtools # x4 faster than v1.3
     BED=$NGSUTILS/bedtools2/bin/bedtools
 fi

@@ -44,15 +44,15 @@ sub variant_calling {
 "Invalid workflow_mode: $workflow_mode. Only 'bash' and 'snakemake' are implemented.\n";
     }
 
-    _submit_cmd( $cmd, $dir, $log, $id, $debug );
+    submit_cmd( $cmd, $dir, $log, $id, $debug );
     return 1;
 }
 
-#-----------------
-# Private Methods:
-#-----------------
+#------------------
+# Helper functions:
+#------------------
 
-sub _submit_cmd {
+sub submit_cmd {
     my ( $cmd, $dir, $log, $id, $debug ) = @_;
     my $path_log = catfile( $dir, $log );
     my $msg      = "Failed to execute: $id\nPlease check this file:\n$path_log\n";
