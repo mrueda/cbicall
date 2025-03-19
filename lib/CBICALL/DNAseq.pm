@@ -7,14 +7,12 @@ use File::Spec::Functions qw(catfile);
 use feature               qw(say);
 
 sub new {
-
     my ( $class, $self ) = @_;
     bless $self, $class;
     return $self;
 }
 
 sub variant_calling {
-
     my $self          = shift;
     my $pipeline      = $self->{pipeline};
     my $workflow_mode = $self->{workflow_mode};
@@ -46,12 +44,15 @@ sub variant_calling {
 "Invalid workflow_mode: $workflow_mode. Only 'bash' and 'snakemake' are implemented.\n";
     }
 
-    submit_cmd( $cmd, $dir, $log, $id, $debug );
+    _submit_cmd( $cmd, $dir, $log, $id, $debug );
     return 1;
 }
 
-sub submit_cmd {
+#-----------------
+# Private Methods:
+#-----------------
 
+sub _submit_cmd {
     my ( $cmd, $dir, $log, $id, $debug ) = @_;
     my $path_log = catfile( $dir, $log );
     my $msg      = "Failed to execute: $id\nPlease check this file:\n$path_log\n";

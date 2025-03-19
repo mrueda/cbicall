@@ -165,7 +165,6 @@ say WHITE, $prompt, ' ', $goodbye->say_goodbye();
 ##############################################################
 
 sub write_log {
-
     my ( $config, $arg, $param ) = @_;
 
     my $file  = catfile( $config->{projectdir}, 'log.json' );
@@ -183,7 +182,6 @@ sub write_log {
 
 # Function that runs a code reference with a spinner.
 sub run_with_spinner {
-
     my $code_ref = shift;
 
     # Run code directly if not interactive.

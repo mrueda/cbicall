@@ -36,7 +36,7 @@ my $obj_bash = {
 my $cmd_bash;
 {
     no warnings 'redefine';
-    *DNAseq::submit_cmd = sub {
+    *DNAseq::_submit_cmd = sub {
         my ($cmd, $dir, $log, $id, $debug) = @_;
         $cmd_bash = $cmd;
         return 1;
@@ -70,7 +70,7 @@ my $obj_smk = {
 
 {
     no warnings 'redefine';
-    *DNAseq::submit_cmd = sub {
+    *DNAseq::_submit_cmd = sub {
         my ($cmd, $dir, $log, $id, $debug) = @_;
         $cmd_smk = $cmd;
         return 1;

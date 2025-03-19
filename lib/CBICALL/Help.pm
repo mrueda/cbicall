@@ -59,7 +59,6 @@ sub new {
 =cut
 
 sub say_goodbye {
-
     my @words = ( <<"EOF" =~ m/^\s*(.+)/gm );
       Aavjo
       Abar Dekha-Hobe

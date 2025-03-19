@@ -44,7 +44,6 @@ my %default = (
 );
 
 sub read_param_file {
-
     my $yaml_file = shift;
     my $param     = LoadFile($yaml_file);
 
@@ -70,7 +69,6 @@ sub read_param_file {
 }
 
 sub set_config_values {
-
     my $param = shift;
     my $user  = $ENV{LOGNAME} || $ENV{USER} || getpwuid($<);
     my $workflows_bash_dir =
