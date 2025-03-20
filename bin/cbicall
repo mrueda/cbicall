@@ -275,7 +275,10 @@ Clone the repository:
 
   git clone https://github.com/mrueda/cbicall.git
   cd cbicall
-  sudo apt-get install cpanminus
+
+Install C<cpanminus> (analog to Python's C<pip>):
+
+  sudo apt install cpanminus
 
 We will install the dependencies at C<~/perl5>:
 
@@ -320,13 +323,7 @@ Extract the tar archive:
 
   tar -xzvf data.tar.gz
 
-Finally, there are two steps to be done:
-
-1. In the downloaded data: 
-   
-Change the C<data.dir> variable in C</path/to/downloaded/data/soft/NGSutils/snpEff_v5.0/snpEff.config>.
-
-2. In C<cbicall> repo: 
+Finally, in the C<cbicall> repo: 
 
 Change C<DATADIR> variable in C<bin/workflows/bash/parameters.sh> and C<bin/workflows/snakemake/config.yaml> so that it matches the location of your downloaded data.
 
