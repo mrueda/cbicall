@@ -78,19 +78,19 @@ Install dependencies for Python:
 
 Finally, navigate to a directory where you want the databases stored and execute:
 
-    python3 $path_to_cbicall/bin/download_external_data.py  # Replace $path_to_cbicall with your CBICall installation path.
+    python3 $path_to_cbicall/scripts/01_download_external_data.py  # Replace $path_to_cbicall with your CBICall installation path.
 
-Note: Google Drive is a tad restrictive the download. If you get an error, please use the link in a browser and you should be able to retrieve it there.
+Note: Google Drive can be a tad restrictive with the download. If you get an error, please use the error URL link in a browser and you should be able to retrieve it there.
 
 Once downloaded, perform a checksum to make sure the files were not corrupted:
 
     md5sum -c data.tar.gz.md5
 
-Now let's reassemble the split files into the original tar archive:
+Now let's reassemble the split files into the original tar archive (note we will be using ~ 130GB) :
 
     cat data.tar.gz.part-?? > data.tar.gz
 
-Clean up split files (when you think you are ready!):
+Clean up split files to save space (when you think you are ready!):
 
     rm data.tar.gz.part-??
 
@@ -98,7 +98,17 @@ Extract the tar archive:
 
     tar -xzvf data.tar.gz
 
-The final step is to change `DATADIR` variable in `bin/workflows/bash/parameters.sh` and `bin/workflows/snakemake/config.sh` so that it matches your location.
+Finally, there are two steps to be done:
+
+1\. In the downloaded data: 
+
+Change the `data.dir` variable in `/path/to/downloaded/data/soft/NGSutils/snpEff_v5.0/snpEff.config`.
+
+2\. In `cbicall` repo: 
+
+Change `DATADIR` variable in `bin/workflows/bash/parameters.sh` and `bin/workflows/snakemake/config.yaml` so that it matches the location of your downloaded data.
+
+Ok, finally make sure you have `Java 8` and `snakemake` (optional) installed and you are good to to. See instructions in the **system-requirements** section.
 
 # HOW TO RUN CBICALL
 

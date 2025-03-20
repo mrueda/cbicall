@@ -78,23 +78,20 @@ sub set_config_values {
 
     # We load %config with the default values
     my %config = (
-        user             => $user,
-        bash_parameters  => catfile( $workflows_bash_dir, 'parameters.sh' ),
+        user            => $user,
+        bash_parameters => catfile( $workflows_bash_dir, 'parameters.sh' ),
         bash_wes_single => catfile( $workflows_bash_dir, 'wes_single.sh' ),
         bash_wes_cohort => catfile( $workflows_bash_dir, 'wes_cohort.sh' ),
         bash_mit_single => catfile( $workflows_bash_dir, 'mit_single.sh' ),
         bash_mit_cohort => catfile( $workflows_bash_dir, 'mit_cohort.sh' ),
-        bash_coverage    => catfile( $workflows_bash_dir, 'coverage.sh' ),
-        bash_jaccard     => catfile( $workflows_bash_dir, 'jaccard.sh' ),
-        bash_vcf2sex     => catfile( $workflows_bash_dir, 'vcf2sex.sh' ),
-        smk_wes_single  =>
-          catfile( $workflows_snakemake_dir, 'wes_single.smk' ),
-        smk_wes_cohort =>
-          catfile( $workflows_snakemake_dir, 'wes_cohort.smk' ),
-        smk_mit_single =>
-          catfile( $workflows_snakemake_dir, 'mit_single.smk' ),
+        bash_coverage   => catfile( $workflows_bash_dir, 'coverage.sh' ),
+        bash_jaccard    => catfile( $workflows_bash_dir, 'jaccard.sh' ),
+        bash_vcf2sex    => catfile( $workflows_bash_dir, 'vcf2sex.sh' ),
+        smk_wes_single => catfile( $workflows_snakemake_dir, 'wes_single.smk' ),
+        smk_wes_cohort => catfile( $workflows_snakemake_dir, 'wes_cohort.smk' ),
+        smk_mit_single => catfile( $workflows_snakemake_dir, 'mit_single.smk' ),
         smk_mit_cohort => catfile( $workflows_snakemake_dir, 'mit_cohort.smk' ),
-        smk_config => catfile( $workflows_snakemake_dir, 'config.yaml' )
+        smk_config     => catfile( $workflows_snakemake_dir, 'config.yaml' )
     );
 
     # Below are a few internal configaters that do not have (or we don't allow for) default values
@@ -108,9 +105,9 @@ sub set_config_values {
       . $config{id};    # User will make symbolic link to final folder
     $config{projectdir} = catdir( abs_path( $param->{sample} ), $tmp_str );
     my @tmp = split /\//, $param->{sample};
-    $config{output_basename}   = $tmp[-1];
-    $config{hostname} = hostname;
-    $config{user}     = $user;
+    $config{output_basename} = $tmp[-1];
+    $config{hostname}        = hostname;
+    $config{user}            = $user;
     chomp( my $threadshost = qx{/usr/bin/nproc} ) // 1;
     $config{threadshost} = 0 + $threadshost;                          # coercing it to be a number
     $config{threadsless} = $threadshost > 1 ? $threadshost - 1 : 1;
@@ -119,6 +116,17 @@ sub set_config_values {
       ( -x '/usr/bin/pigz' )
       ? "/usr/bin/pigz -p $str_threadsless"
       : '/bin/gunzip';
+
+    # Determine the architecture
+    my $uname = `uname -m`;
+    chomp($uname);
+    my $arch =
+      ( $uname eq 'x86_64' )
+      ? 'x86_64'
+      : ( $uname eq 'aarch64' ? 'arm64' : $uname );
+
+    # Load arch to config
+    $config{arch} = $arch;
 
     # Check if all required bash files exist and have +x permission
     die "You don't have +x permission for one or more Bash files"

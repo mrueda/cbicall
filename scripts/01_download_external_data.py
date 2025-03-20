@@ -1,4 +1,4 @@
-import gdown
+import os, gdown
 
 # Dictionary mapping the desired output filenames to their Google Drive file IDs
 files = {
@@ -9,8 +9,14 @@ files = {
     'data.tar.gz.part-03': '1sXOKZiv4pZECQRAYiO4k2gjItqcDfrco'
 }
 
-# Loop over each file, build the download URL, and download it
+def download_if_missing(filename, file_id):
+    if os.path.exists(filename):
+        print(f"{filename} already exists. Skipping download.")
+    else:
+        url = f'https://drive.google.com/uc?export=download&id={file_id}'
+        print(f"Downloading {filename}...")
+        gdown.download(url, filename, quiet=False)
+
+# Check and download files if not present
 for filename, file_id in files.items():
-    url = f'https://drive.google.com/uc?export=download&id={file_id}'
-    print(f"Downloading {filename}...")
-    gdown.download(url, filename, quiet=False)
+    download_if_missing(filename, file_id)
