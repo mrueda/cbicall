@@ -16,7 +16,7 @@ do
   cat<<EOF>$sample.smk_wes_single.yaml
 mode: single
 pipeline: wes
-workflow_mode: snakemake
+workflow_engine: snakemake
 sample: $dir/$dirname/$sample
 EOF
 time $cbicall -t $ncpu -p $sample.smk_wes_single.yaml > $sample.smk_wes_single.log 2>&1

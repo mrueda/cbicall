@@ -1,4 +1,4 @@
 mode: single
 pipeline: wes
-workflow_mode: bash
+workflow_engine: bash
 sample: CNAG999_exome/CNAG99901P_ex
