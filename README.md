@@ -75,7 +75,7 @@ Optional, peform tests:
 
     prove -l
 
-Install dependencies for Python:
+Install dependencies for Python 3:
 
     pip3 install -r requirements.txt
 
@@ -103,9 +103,11 @@ Extract the tar archive:
 
 Finally, in the `cbicall` repo: 
 
-Change `DATADIR` variable in `bin/workflows/bash/parameters.sh` and `bin/workflows/snakemake/config.yaml` so that it matches the location of your downloaded data.
+Change `DATADIR` variable in `workflows/bash/parameters.sh` and `workflows/snakemake/config.yaml` so that it matches the location of your downloaded data.
 
-Ok, finally make sure you have `Java 8` and `snakemake` (optional) installed and you are good to to. See instructions in the **system-requirements** section.
+Ok, finally we are going to install `Java 8` in case you don't have it already:
+
+    sudo apt install openjdk-8-jdk
 
 # HOW TO RUN CBICALL
 
@@ -152,6 +154,10 @@ Below is a detailed description of key parameters:
 - **sample**
 
     Path (relative or absolute) to the directory containing FASTQ files for analysis. See the `examples` directory for detailed guidance.
+
+    Example:
+
+    examples/input/CNAG999\_exome/CNAG99901P\_ex
 
 - **workflow\_mode**
 
