@@ -89,7 +89,7 @@ Once downloaded, perform a checksum to make sure the files were not corrupted:
 
     md5sum -c data.tar.gz.md5
 
-Now let's reassemble the split files into the original tar archive (note we will be using ~ 130GB) :
+Now let's reassemble the split files into the original tar archive:
 
     cat data.tar.gz.part-?? > data.tar.gz
 
