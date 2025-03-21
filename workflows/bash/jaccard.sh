@@ -17,11 +17,11 @@ export LC_ALL=C
 # Check arguments
 if [ $# -ne 1 ]
  then
-  echo "$0 <workflow_mode>"
+  echo "$0 <workflow_engine>"
   exit 1
 fi
 
-workflow_mode=$1
+workflow_engine=$1
 
 # Determine the directory where the script resides
 BINDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -29,7 +29,7 @@ BINDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Source parameters.sh from the same directory
 source "$BINDIR/parameters.sh"
 
-dir=../*_ex/cbicall_${workflow_mode}_wes_single*/02_varcall
+dir=../*_ex/cbicall_${workflow_engine}_wes_single*/02_varcall
 
 for vcf1 in $( ls -1 $dir/*.*QC.vcf )
 do

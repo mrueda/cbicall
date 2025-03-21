@@ -124,7 +124,7 @@ my $rah_cbicall = {    # Ref anonymous hash to be used w/ the object wes
     pipeline        => $param->{pipeline},
     mode            => $param->{mode},
     sample          => $param->{sample},
-    workflow_mode   => $param->{workflow_mode},
+    workflow_engine   => $param->{workflow_engine},
     threads         => $arg->{threads},
     id              => $config->{id},
     debug           => $arg->{debug},
@@ -138,7 +138,7 @@ my $rah_cbicall = {    # Ref anonymous hash to be used w/ the object wes
     smk_wes_single  => $config->{smk_wes_single}
 };
 say "$prompt Running ",
-  join( '->', $param->{workflow_mode}, $param->{pipeline}, $param->{mode} ),
+  join( '->', $param->{workflow_engine}, $param->{pipeline}, $param->{mode} ),
   ' workflow...';
 
 my $wes = DNAseq->new($rah_cbicall);
@@ -356,7 +356,7 @@ Below are the parameters that can be customized, along with their default values
   mode:            single  
   pipeline:        wes          
   sample:          undef        
-  workflow_mode:   bash
+  workflow_engine:   bash
 
 =head2 Optional Parameters (Currently Unused)
 
@@ -387,7 +387,7 @@ Example:
 
 examples/input/CNAG999_exome/CNAG99901P_ex
 
-=item B<workflow_mode>
+=item B<workflow_engine>
 
 Supported workflow engines: C<bash> or C<snakemake>.
 

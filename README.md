@@ -130,7 +130,7 @@ Below are the parameters that can be customized, along with their default values
     mode:            single  
     pipeline:        wes          
     sample:          undef        
-    workflow_mode:   bash
+    workflow_engine:   bash
 
 ## Optional Parameters (Currently Unused)
 
@@ -159,7 +159,7 @@ Below is a detailed description of key parameters:
 
     examples/input/CNAG999\_exome/CNAG99901P\_ex
 
-- **workflow\_mode**
+- **workflow\_engine**
 
     Supported workflow engines: `bash` or `snakemake`.
 

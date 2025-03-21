@@ -15,7 +15,7 @@ sub new {
 sub variant_calling {
     my $self          = shift;
     my $pipeline      = $self->{pipeline};
-    my $workflow_mode = $self->{workflow_mode};
+    my $workflow_engine = $self->{workflow_engine};
     my $dir           = $self->{projectdir};
     my $threads       = $self->{threads};
     my $mode          = $self->{mode};
@@ -24,13 +24,13 @@ sub variant_calling {
     my $cmd;
     my $log;
 
-    if ( $workflow_mode eq 'bash' ) {
+    if ( $workflow_engine eq 'bash' ) {
         my $bash_str = 'bash_' . $pipeline . '_' . $mode;
         my $bash     = $self->{$bash_str};
         $log = $bash_str . '.log';
         $cmd = "cd $dir && $bash -t $threads > $log 2>&1";
     }
-    elsif ( $workflow_mode eq 'snakemake' ) {
+    elsif ( $workflow_engine eq 'snakemake' ) {
 
         # Example snakemake command; adjust as needed.
         my $smk_str = 'smk_' . $pipeline . '_' . $mode;
@@ -41,7 +41,7 @@ sub variant_calling {
     }
     else {
         die
-"Invalid workflow_mode: $workflow_mode. Only 'bash' and 'snakemake' are implemented.\n";
+"Invalid workflow_engine: $workflow_engine. Only 'bash' and 'snakemake' are implemented.\n";
     }
 
     submit_cmd( $cmd, $dir, $log, $id, $debug );

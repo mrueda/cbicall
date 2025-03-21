@@ -18,7 +18,7 @@ my $genome_type        = enum [qw(hg19 hg38)];
 my $organism_type      = enum [ 'Homo Sapiens',       'Mus musculus' ];
 my $technology_type    = enum [ 'Illumina HiSeq',     'NovaSeq' ];
 my $capture_type       = enum [ 'Agilent SureSelect', 'NimbleGen' ];
-my $workflow_mode_type = enum [qw(bash nextflow snakemake)];
+my $workflow_engine_type = enum [qw(bash nextflow snakemake)];
 
 # Map each parameter key to its type constraint
 my %param_types = (
@@ -28,7 +28,7 @@ my %param_types = (
     organism      => $organism_type,
     technology    => $technology_type,
     capture       => $capture_type,
-    workflow_mode => $workflow_mode_type,
+    workflow_engine => $workflow_engine_type,
 );
 
 # Define default values
@@ -40,7 +40,7 @@ my %default = (
     organism      => 'Homo Sapiens',
     technology    => 'Illumina HiSeq',
     capture       => 'Agilent SureSelect',
-    workflow_mode => 'bash'
+    workflow_engine => 'bash'
 );
 
 sub read_param_file {
@@ -99,7 +99,7 @@ sub set_config_values {
     $config{date} = localtime();
     my $tmp_str = '/'
       . 'cbicall' . '_'
-      . $param->{workflow_mode} . '_'
+      . $param->{workflow_engine} . '_'
       . $param->{pipeline} . '_'
       . $param->{mode} . '_'
       . $config{id};    # User will make symbolic link to final folder
