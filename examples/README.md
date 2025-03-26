@@ -1,37 +1,12 @@
-
 # Examples README
 
 This directory contains data to verify that the variant calling pipeline functions correctly.
 
 ---
 
-## INPUT: Data Generation (`input`)
+## Input:
 
-Note: Adjust paths to your local setup. All necessary files are provided with the [external data](../README.md#INSTALLATION).
-
-```bash
-DBDIR=/media/mrueda/2TBS/Databases
-BUNDLE=$DBDIR/GATK_bundle/b37
-REF=$BUNDLE/references_b37_Homo_sapiens_assembly19.fasta
-WGSIM=/media/mrueda/2TBS/NGSutils/wgsim
-$WGSIM -S 42 -N 50000 -1 150 -2 150 -r 0.001 -e 0.02 -R 0.001 -X 0.001 \
-  $REF sim_R1.fastq sim_R2.fastq > wgsim.log
-```
-
-| Parameter | Description |
-|-----------|-------------|
-| `-S 42`   |  Seed       |
-| `-N 1000000` | Generates **1,000,000 read pairs** |
-| `-1 150` | Read length of **150bp** for read 1 |
-| `-2 150` | Read length of **150bp** for read 2 |
-| `-r 0.001` | Mutation rate (**0.1% of bases mutated**) |
-| `-e 0.02` | Sequencing error rate (**2% of bases will have errors**) |
-| `-R 0.001` | Fraction of reads with an **indel** |
-| `-X 0.001` | Indel rate per base |
-| `ref.fasta` | Your reference genome (input) |
-| `sim_R1.fastq` | Output file for **forward reads (R1)** |
-| `sim_R2.fastq` | Output file for **reverse reads (R2)** |
-
+The input is pre-generated for you in the `input` directory.
 
 ### About Nomenclature
 
@@ -60,7 +35,34 @@ gzip -c sim_R1.fastq > CNAG999_exome/CNAG99901P_ex/CNAG99901F_ex_S2_L001_R1_001.
 gzip -c sim_R2.fastq > CNAG999_exome/CNAG99901P_ex/CNAG99901F_ex_S2_L001_R2_001.fastq.gz
 ```
 
-### Run `cbicall`
+### Creating additional input examples
+
+Note: Adjust paths to your local setup. All necessary files are provided with the [external data](../README.md#INSTALLATION).
+
+```bash
+DBDIR=/media/mrueda/2TBS/Databases
+BUNDLE=$DBDIR/GATK_bundle/b37
+REF=$BUNDLE/references_b37_Homo_sapiens_assembly19.fasta
+WGSIM=/media/mrueda/2TBS/NGSutils/wgsim
+$WGSIM -S 42 -N 50000 -1 150 -2 150 -r 0.001 -e 0.02 -R 0.001 -X 0.001 \
+  $REF sim_R1.fastq sim_R2.fastq > wgsim.log
+```
+
+| Parameter | Description |
+|-----------|-------------|
+| `-S 42`   |  Seed       |
+| `-N 1000000` | Generates **1,000,000 read pairs** |
+| `-1 150` | Read length of **150bp** for read 1 |
+| `-2 150` | Read length of **150bp** for read 2 |
+| `-r 0.001` | Mutation rate (**0.1% of bases mutated**) |
+| `-e 0.02` | Sequencing error rate (**2% of bases will have errors**) |
+| `-R 0.001` | Fraction of reads with an **indel** |
+| `-X 0.001` | Indel rate per base |
+| `ref.fasta` | Your reference genome (input) |
+| `sim_R1.fastq` | Output file for **forward reads (R1)** |
+| `sim_R2.fastq` | Output file for **reverse reads (R2)** |
+
+## Run `cbicall`
 
 #### Wes Single
 
@@ -106,6 +108,6 @@ Generate larger FASTQ files using `wgsim` for multiple samples:
 
 ---
 
-## SCRIPTS  (`scripts`)
+## Scripts
 
-In the directory `scripts` you will find examples of how to run `cbicall`.
+In the directory `scripts` you will find examples of how to run `cbicall` in bulk.
