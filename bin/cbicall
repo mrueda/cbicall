@@ -13,6 +13,7 @@
 use strict;
 use warnings;
 use autodie;
+use utf8;
 use feature         qw(say);
 use Cwd             qw(abs_path);
 use Term::ANSIColor qw(:constants);
@@ -32,6 +33,9 @@ use CBICALL::DNAseq;
 #            Variables definition                           #
 #############################################################
 
+# Set STDOUT to output UTF-8
+binmode STDOUT, ':encoding(UTF-8)';
+
 # CBICall version
 my $version = '0.0.1';
 
@@ -40,8 +44,8 @@ my $prompt       = 'Info:';
 my $spacer       = '*' x 39;
 my $arrow        = '=>';
 my $cmd          = '';
-my $author      = 'Author: Manuel Rueda, PhD';
-my $license     = 'License: GNU General Public License v3';
+my $author       = 'Author: Manuel Rueda, PhD';
+my $license      = 'License: GNU General Public License v3';
 my $cbicall_path = abs_path($0);
 
 # Personalize warn and die functions
@@ -67,10 +71,10 @@ my $config = Config::set_config_values($param);
 $config->{version} = $version;
 
 # Start CBICALL
-say CYAN "$prompt CBICall $version", RESET;
-say "$prompt CBICall exe: $cbicall_path";
-say "$prompt $author";
-say "$prompt $license\n$prompt";
+say CYAN "$prompt 🚀 CBICall $version", RESET;
+say "$prompt 🖥️ CBICall exe: $cbicall_path";
+say "$prompt ✍️  $author";
+say "$prompt 📜 $license\n$prompt";
 
 # Print arguments to stdout
 say BOLD YELLOW, "$prompt ARGUMENTS USED:", RESET;
@@ -79,7 +83,7 @@ say WHITE "$prompt --t $arg->{threads}"   if $arg->{threads};
 
 # Printing the config values to stdout according to the format below
 say WHITE "$prompt";
-say BOLD BLUE, "$prompt CONFIGURATION VALUES:", RESET;
+say BOLD BLUE, "$prompt ⚙️  CONFIGURATION VALUES:", RESET;
 
 $~ = "CONFIG";
 my $l_config = '';
@@ -94,7 +98,7 @@ $prompt, $l_config, $arrow, $config->{$l_config}
 
 # Printing the config values to stdout according to the format below
 say WHITE "$prompt";
-say BOLD GREEN, "$prompt CBICALL PARAMETERS:", RESET;
+say BOLD GREEN, "$prompt 🎬 CBICALL PARAMETERS:", RESET;
 
 $~ = "PARAMS";
 my $l_param = '';
@@ -109,7 +113,7 @@ $prompt, $l_param, $arrow, $param->{$l_param}
 
 # Start CBICall
 say $prompt;
-say BOLD CYAN "$prompt STARTING CBICALL FUN";
+say BOLD CYAN "$prompt 🚦 STARTING CBICALL FUN";
 say RESET "$prompt $spacer";
 
 # Create the working dir
@@ -124,7 +128,7 @@ my $rah_cbicall = {    # Ref anonymous hash to be used w/ the object wes
     pipeline        => $param->{pipeline},
     mode            => $param->{mode},
     sample          => $param->{sample},
-    workflow_engine   => $param->{workflow_engine},
+    workflow_engine => $param->{workflow_engine},
     threads         => $arg->{threads},
     id              => $config->{id},
     debug           => $arg->{debug},
@@ -139,7 +143,7 @@ my $rah_cbicall = {    # Ref anonymous hash to be used w/ the object wes
 };
 say "$prompt Running ",
   join( '->', $param->{workflow_engine}, $param->{pipeline}, $param->{mode} ),
-  ' workflow...';
+  ' workflow 🧬 ...';
 
 my $wes = DNAseq->new($rah_cbicall);
 run_with_spinner(
@@ -150,7 +154,7 @@ run_with_spinner(
 
 # END CBICALL
 say "$prompt $spacer";
-say BOLD GREEN, "$prompt CBICALL FINISHED OK", RESET;
+say BOLD GREEN, "$prompt ✅ CBICALL FINISHED OK", RESET;
 
 # Optional message
 say "$prompt Date: ",            scalar localtime if $arg->{verbose};
@@ -158,7 +162,7 @@ say "$prompt Running time(s): ", time - $^T       if $arg->{verbose};
 
 # Say goodbye message
 my $goodbye = GoodBye->new();
-say WHITE, $prompt, ' ', $goodbye->say_goodbye();
+say WHITE, $prompt, ' 👋 ', $goodbye->say_goodbye();
 
 ##############################################################
 #                   Code ends here                           #
@@ -210,7 +214,7 @@ sub run_with_spinner {
                 my $message =
                     BOLD
                   . WHITE
-                  . " Please be patient — this job may take hours (elapsed: $elapsed_str)..."
+                  . " Please be patient - this job may take hours ⏳ (elapsed: $elapsed_str)..."
                   . RESET;
                 print "\r$spinner_char$message";
                 $i++;
