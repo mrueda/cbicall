@@ -1,9 +1,11 @@
-<p align="center">
-  <a href="https://github.com/mrueda/cbicall"><img src="  <img src="https://raw.githubusercontent.com/mrueda/cbicall/main/docs/img/cbicall-logo.png" width="400" alt="CBICall">
-</p>
-<p align="center">
-    <em>CNAG Biomedical Informatics framework for variant Calling</em>
-</p>
+<div align="center">
+  <h1>CBICall</h1>
+  <a href="https://github.com/mrueda/cbicall">
+    <img src="https://raw.githubusercontent.com/mrueda/cbicall/main/docs/img/cbicall-logo.png"
+         width="300" alt="CBICall">
+  </a>
+  <p><em>CNAG Biomedical Informatics framework for variant Calling</em></p>
+</div>
 
 ![version](https://img.shields.io/badge/version-0.0.1-28a745)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
@@ -31,15 +33,17 @@ CBICall: CNAG Biomedical Informatics Framework for Variant Calling on Illumina N
     cbicall -i <parameters_file.yaml> -t <n_threads> [options]
 
     Arguments:
-      -p|param       Parameters input file (YAML)
-      -t|threads     Number of CPUs/Cores/Threads
+      -p|param          Parameters input file (YAML)
+      -t|threads        Number of CPUs/Cores/Threads
 
     Options:
-      -debug         Debugging level (from 1 to 5; 5 is maximum verbosity)
-      -h|help        Brief help message
-      -man           Full documentation
-      -v             Show version information
-      -verbose       Enable verbose output
+      -debug            Debugging level (from 1 to 5; 5 is maximum verbosity)
+      -h|help           Brief help message
+      -man              Full documentation
+      -v                Show version information
+      -verbose          Enable verbose output
+      -nc|no-color      Do not print colors to STDOUT
+      -ne|no-emoji      Do not print emojis to STDOUT
 
 # SUMMARY
 
@@ -54,9 +58,9 @@ Clone the repository:
     git clone https://github.com/mrueda/cbicall.git
     cd cbicall
 
-Install `cpanminus` (analog to Python's `pip`):
+Install `cpanminus` (analog to Python's `pip`) and GNU compilers:
 
-    sudo apt install cpanminus
+    sudo apt install cpanminus gcc
 
 We will install the dependencies at `~/perl5`:
 

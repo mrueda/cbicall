@@ -18,8 +18,9 @@ sub usage {
         'h|help'      => \$arg{help},                        # flag
         'man'         => \$arg{man},                         # flag
         't|threads=i' => \$arg{threads},                     # numeric (integer)
-        'p|param=s'   => \$arg{paramfile}                    # string
-
+        'p|param=s'   => \$arg{paramfile},                   # string
+        'no-color|nc' => \$arg{nocolor},
+        'no-emoji|ne' => \$arg{noemoji},
     ) or pod2usage( -exitval => 0, -verbose => 1 );
 
     # Control check
