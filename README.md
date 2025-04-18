@@ -1,8 +1,7 @@
 <div align="center">
-  <h1>CBICall</h1>
   <a href="https://github.com/mrueda/cbicall">
     <img src="https://raw.githubusercontent.com/mrueda/cbicall/main/docs/img/cbicall-logo.png"
-         width="300" alt="CBICall">
+         width="350" alt="CBICall">
   </a>
   <p><em>CNAG Biomedical Informatics framework for variant Calling</em></p>
 </div>
@@ -26,7 +25,7 @@
 
 # NAME
 
-CBICall: CNAG Biomedical Informatics Framework for Variant Calling on Illumina NGS Data.
+CBICall: CNAG Biomedical Informatics Framework for Variant Calling on Illumina DNA-seq NGS Data.
 
 # SYNOPSIS
 
@@ -193,7 +192,7 @@ All parts must follow a strict character count, and everything after the undersc
 
     Total: 7 + 1 + 5 = 13 characters.
 
-## File Naming
+## Subdirectory Naming
 
 - Format: `[ProjectCode][SampleID][Role]_[SampleTypeShort]`
 
@@ -207,6 +206,25 @@ All parts must follow a strict character count, and everything after the undersc
         MA9999901F_ex
 
     Total: 7 + 2 + 1 + 1 + 2 = 13 characters (excluding any file extension).
+
+## FASTQ Naming Convention
+
+This convention is adapted from the following document:
+
+[Document](https://support.illumina.com/help/BaseSpace_Sequence_Hub_OLH_009008_2/Source/Informatics/BS/NamingConvention_FASTQ-files-swBS.htm)
+
+We have added a custom suffix to indicate sequencing type:
+
+    - _ex for exome sequencing
+    - _wg for whole genome sequencing
+
+Example:
+
+    MA0004701P_ex_S5_L001_R1_001.fastq.gz
+
+In summary, you need to have something like this:
+
+    MA00001_exome/MA0000101P_ex/MA0000101P_ex_S1_L001_R?_001.fastq.gz
 
 # SYSTEM REQUIREMENTS
 

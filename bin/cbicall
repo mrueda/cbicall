@@ -254,7 +254,7 @@ __END__
 
 =head1 NAME
 
-CBICall: CNAG Biomedical Informatics Framework for Variant Calling on Illumina NGS Data.
+CBICall: CNAG Biomedical Informatics Framework for Variant Calling on Illumina DNA-seq NGS Data.
 
 =head1 SYNOPSIS
 
@@ -438,7 +438,7 @@ Total: 7 + 1 + 5 = 13 characters.
 
 =back
 
-=head2 File Naming
+=head2 Subdirectory Naming
 
 =over
 
@@ -463,6 +463,25 @@ Example:
 Total: 7 + 2 + 1 + 1 + 2 = 13 characters (excluding any file extension).
 
 =back
+
+=head2 FASTQ Naming Convention
+
+This convention is adapted from the following document:
+
+L<Document|https://support.illumina.com/help/BaseSpace_Sequence_Hub_OLH_009008_2/Source/Informatics/BS/NamingConvention_FASTQ-files-swBS.htm>
+
+We have added a custom suffix to indicate sequencing type:
+
+ - _ex for exome sequencing
+ - _wg for whole genome sequencing
+
+Example:
+
+  MA0004701P_ex_S5_L001_R1_001.fastq.gz
+
+In summary, you need to have something like this:
+
+  MA00001_exome/MA0000101P_ex/MA0000101P_ex_S1_L001_R?_001.fastq.gz
 
 =head1 SYSTEM REQUIREMENTS
 
